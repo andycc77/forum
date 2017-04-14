@@ -24,7 +24,7 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="../navbar/">登入</a></li>
-                <li><a href="../navbar-fixed-top/">註冊</a></li>
+                <li><a href="/user/register">註冊</a></li>
             </ul>
         </div><!--/.nav-collapse -->
     </div>
