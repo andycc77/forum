@@ -2,9 +2,9 @@
 @section('content')
     <div class="container">
         <div class="jumbotron">
-            <h1>歡迎來到Laravel社區
+            <h2>歡迎來到Laravel社區
                 <a class="btn btn-lg btn-primary pull-right" href="../../components/#navbar" role="button">發佈新的帖子 »</a>
-            </h1>
+            </h2>
         </div>
     </div>
     <div class="container">
@@ -18,7 +18,7 @@
                     </a>
                     </div>
                     <div class="media-body">
-                    <h4 class="media-heading">{{$discussion->title}}</h4>
+                        <h4 class="media-heading"><a href="{{url('discussions',[$discussion->id])}}">{{$discussion->title}}</a></h4>
                     {{$discussion->user->name}}
                     </div>
                     </div>
