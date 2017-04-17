@@ -67,6 +67,24 @@ class UsersController extends Controller
         return redirect('user/login');
     }
 
+    public function login()
+    {
+        return view('users/login');
+    }
+
+    public function signin(Requests\UserLoginRequest $request)
+    {
+        if (\Auth::attempt([
+            'email'=>$request->get('email'),
+            'password'=>$request->get('password'),
+            'is_confirmed'=>1
+        ])){
+            return redirect('/');
+        }
+        \Session::flash('user_login_failed','密碼不正確或是信箱沒驗證');
+        return redirect('/user/login')->withInput();
+    }
+
     /**
      * Display the specified resource.
      *
