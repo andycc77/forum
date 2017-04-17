@@ -86,8 +86,8 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'name' => [
+            'required' => '用戶名不能為空',
         ],
     ],
 
