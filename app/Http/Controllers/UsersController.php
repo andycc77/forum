@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Image;
 use Mail;
 class UsersController extends Controller
 {
@@ -90,9 +91,18 @@ class UsersController extends Controller
         return view('users.avatar');
     }
 
-    public function changeAvatar()
+    public function changeAvatar(Request $request)
     {
-        dd('avatar');
+        $file = $request->file('avatar');
+        $destinationPath = 'uploads/';
+        $filename = $file->getClientOriginalName();
+        $file->move($destinationPath, $filename);
+        Image::make($destinationPath.$filename)->fit(200)->save();
+        $user = User::find(\Auth::user()->id);
+        $user->avatar = '/'.$destinationPath.$filename;
+        $user->save();
+
+        return redirect('/user/avatar');
     }
     /**
      * Display the specified resource.
