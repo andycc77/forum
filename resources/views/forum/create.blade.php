@@ -12,7 +12,7 @@
                 <!---  Field --->
                 <div class="form-group">
                     {!! Form::label('body', 'Body:') !!}
-                    {!! Form::text('body', null, ['class' => 'form-control']) !!}
+                    {!! Form::textarea('body', null, ['class' => 'form-control']) !!}
                 </div>
                 <div>
                     {!! Form::submit('發表帖子',['class'=>'btn btn-primary pull-right']) !!}

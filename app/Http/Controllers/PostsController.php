@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Discussion;
+use App\Markdown\Markdown;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -10,12 +11,14 @@ use App\Http\Controllers\Controller;
 
 class PostsController extends Controller
 {
+    protected $markdown;
     /**
      * PostsController constructor.
      */
-    public function __construct()
+    public function __construct(Markdown $markdown)
     {
         $this->middleware('auth',['only'=>['create','store','edit','update']]);
+        $this->markdown = $markdown;
     }
 
     /**
@@ -64,7 +67,8 @@ class PostsController extends Controller
     public function show($id)
     {
         $discussion = Discussion::findOrFail($id);
-        return view('forum.show',compact('discussion'));
+        $html = $this->markdown->markdown($discussion->body);
+        return view('forum.show',compact('discussion','html'));
     }
 
     /**
