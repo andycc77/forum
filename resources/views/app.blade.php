@@ -11,6 +11,9 @@
     <script  src="{{asset('/js/jquery.Jcrop.min.js')}}"></script>
     <script  src="{{asset('/js/bootstrap.min.js')}}"></script>
     <script  src="{{asset('/js/jquery.form.js')}}"></script>
+    <script  src="{{asset('/js/vue.min.js')}}"></script>
+    <script  src="{{asset('/js/vue-resource.min.js')}}"></script>
+    <meta id="token" name="token" value="{{csrf_token()}}">
 </head>
 <body>
 <nav class="navbar navbar-default navbar-static-top">
