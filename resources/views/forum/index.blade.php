@@ -3,7 +3,7 @@
     <div class="container">
         <div class="jumbotron">
             <h2>歡迎來到Laravel社區
-                <a class="btn btn-lg btn-primary pull-right" href="../../components/#navbar" role="button">發佈新的帖子 »</a>
+                <a class="btn btn-lg btn-primary pull-right" href="/discussions/create" role="button">發佈新的帖子 »</a>
             </h2>
         </div>
     </div>
