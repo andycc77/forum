@@ -42,4 +42,9 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     {
         $this->attributes['password'] = \Hash::make($password);
     }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
 }
