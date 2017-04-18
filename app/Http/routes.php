@@ -23,6 +23,6 @@ Route::get('/verify/{confirm_code}','UsersController@confirmEmail');
 Route::post('/user/register','UsersController@store');
 Route::post('/user/login','UsersController@signin');
 Route::post('/crop/api','UsersController@cropAvatar');
-
+Route::post('/post/upload','PostsController@upload');
 
 Route::get('/logout','UsersController@logout');

@@ -1,8 +1,9 @@
 @extends('app')
 @section('content')
+    @include('editor::head')
     <div class="container">
           <div class="row">
-            <div class="col-md-8 col-md-offset-2" role="main">
+            <div class="col-md-10 col-md-offset-1" role="main">
                 {!! Form::open(['url'=>'/discussions']) !!}
                 <!---  Field --->
                 <div class="form-group">
@@ -11,8 +12,9 @@
                 </div>
                 <!---  Field --->
                 <div class="form-group">
-                    {!! Form::label('body', 'Body:') !!}
-                    {!! Form::textarea('body', null, ['class' => 'form-control']) !!}
+                    <div class="editor">
+                        {!! Form::textarea('body', null, ['class' => 'form-control','id'=>'myEditor']) !!}
+                    </div>
                 </div>
                 <div>
                     {!! Form::submit('發表帖子',['class'=>'btn btn-primary pull-right']) !!}
