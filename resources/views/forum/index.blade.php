@@ -3,7 +3,7 @@
     <div class="container">
         <div class="jumbotron">
             <h2>歡迎來到Laravel社區
-                <a class="btn btn-lg btn-primary pull-right" href="/discussions/create" role="button">發佈新的帖子 »</a>
+                <a class="btn btn-lg btn-danger pull-right" href="/discussions/create" role="button">發佈新的帖子 »</a>
             </h2>
         </div>
     </div>
@@ -18,7 +18,14 @@
                     </a>
                     </div>
                     <div class="media-body">
-                        <h4 class="media-heading"><a href="{{url('discussions',[$discussion->id])}}">{{$discussion->title}}</a></h4>
+                        <h4 class="media-heading"><a href="{{url('discussions',[$discussion->id])}}">{{$discussion->title}}</a>
+                            <div class="media-conversation-meta">
+                                <span class="media-conversation-replies">
+                                    <a href="/discussions/{{$discussion->id}}#reply">{{count($discussion->comments)}}</a>
+                                    回覆
+                                </span>
+                            </div>
+                        </h4>
                     {{$discussion->user->name}}
                     </div>
                     </div>
