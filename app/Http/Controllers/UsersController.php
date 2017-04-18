@@ -136,4 +136,10 @@ class UsersController extends Controller
             $message->to($user->email)->subject($subject);
         });
     }
+
+    public function logout()
+    {
+        \Auth::logout();
+        return redirect('/');
+    }
 }
