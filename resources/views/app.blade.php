@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="/css/bootstrap.css">
     <link rel="stylesheet" href="/css/font-awesome.css">
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="{{asset('/css/jquery.Jcrop.css')}}">
     <script  src="{{asset('/js/jquery-2.1.4.min.js')}}"></script>
     <script  src="{{asset('/js/jquery.Jcrop.min.js')}}"></script>
     <script  src="{{asset('/js/bootstrap.min.js')}}"></script>

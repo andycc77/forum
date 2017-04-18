@@ -106,15 +106,28 @@ class UsersController extends Controller
         $destinationPath = 'uploads/';
         $filename = $file->getClientOriginalName();
         $file->move($destinationPath, $filename);
-        Image::make($destinationPath.$filename)->fit(200)->save();
-        $user = User::find(\Auth::user()->id);
-        $user->avatar = '/'.$destinationPath.$filename;
-        $user->save();
+        Image::make($destinationPath.$filename)->fit(400)->save();
 
         return \Response::json([
             'success'=>true,
-            'avatar'=> asset($destinationPath.$filename)
+            'avatar'=> '/'.$destinationPath.$filename
         ]);
+    }
+
+    public function cropAvatar(Request $request)
+    {
+        $photo = mb_substr($request->get('photo'),1);
+        $width = (int) $request->get('w');
+        $height = (int) $request->get('h');
+        $xAlign =(int) $request->get('x');
+        $yAlign = (int) $request->get('y');
+        Image::make($photo)->crop($width, $height, $xAlign, $yAlign)->save();
+
+        $user = \Auth::user();
+        $user->avatar = $request->get('photo');
+        $user->save();
+
+        return redirect('/user/avatar');
     }
     /**
      * Display the specified resource.
