@@ -94,6 +94,15 @@ class UsersController extends Controller
     public function changeAvatar(Request $request)
     {
         $file = $request->file('avatar');
+        $input = array('image' => $file);
+        $rules = array('image'=>'image');
+        $validator = \Validator::make($input,$rules);
+        if($validator->failed()){
+            return \Response::json([
+                'success'=>false,
+                'errors'=> $validator->getMessageBag()->toArray()
+            ]);
+        }
         $destinationPath = 'uploads/';
         $filename = $file->getClientOriginalName();
         $file->move($destinationPath, $filename);
@@ -102,7 +111,10 @@ class UsersController extends Controller
         $user->avatar = '/'.$destinationPath.$filename;
         $user->save();
 
-        return redirect('/user/avatar');
+        return \Response::json([
+            'success'=>true,
+            'avatar'=> asset($destinationPath.$filename)
+        ]);
     }
     /**
      * Display the specified resource.
