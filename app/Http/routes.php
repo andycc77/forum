@@ -13,6 +13,7 @@
 
 Route::get('/', 'PostsController@index');
 Route::resource('discussions','PostsController');
+Route::resource('comment','CommentsController');
 
 Route::get('/user/register','UsersController@register');
 Route::get('/user/login','UsersController@login');
